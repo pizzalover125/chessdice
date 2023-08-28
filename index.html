@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>Chess Dice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            place-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        .die {
+            background-color: #0e1111;
+            height: 0;
+            width: 20%;
+            padding-bottom: 20%;
+            margin: 8px;
+        }
+
+        #newDiceBtn {
+            position: absolute;
+            bottom: 0;
+            margin: 16px;
+            padding: 32px;  
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1em;
+            background-color: #0e1111;
+            color: white;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-width: 4px;
+            border-style: solid;
+            border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            transition: border-image 0.25s;
+            transition: border 1s;
+        }
+
+        #newDiceBtn:hover {
+            transition: border-image 1s;
+            border-image: linear-gradient(to left, darkblue, darkorchid) 1;
+        }
+
+        #newDiceBtn:active {
+            transition: border 1s;
+            border: none;
+        }
+        
+        #i1, #i2, #i3 {
+            min-width: 100%;
+            min-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="die" id="d1">
+        <img id="i1">
+    </div>
+    <div class="die" id="d2">
+        <img id="i2">
+    </div>
+    <div class="die" id="d3">
+        <img id="i3">
+    </div>
+
+    <button id="newDiceBtn" onclick="setImg()">Roll Dice</button>
+
+    <script>
+        function generatePiece() {
+            let num = Math.floor(Math.random() * 6);
+            let pieces = ['wB.png', 'wK.png', 'wN.png', 'wP.png', 'wQ.png', 'wR.png'];
+
+            return pieces[num];
+        }
+
+        function setImg() {
+            let i1 = generatePiece();
+            let i2 = generatePiece();
+            let i3 = generatePiece();
+
+            $("#i1").attr("src", i1);
+            $("#i2").attr("src", i2);
+            $("#i3").attr("src", i3);
+        }        
+    </script>
+</body>
+</html>
